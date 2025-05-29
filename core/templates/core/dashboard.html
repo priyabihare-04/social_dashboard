@@ -1,0 +1,20 @@
+<h3>Post a New Tweet</h3>
+<form method="post">
+  {% csrf_token %}
+  <textarea name="tweet" rows="3" cols="50" placeholder="Write your tweet here..."></textarea><br>
+  <button type="submit">Post Tweet</button>
+</form>
+
+<hr>
+
+<h3>Your Twitter Posts:</h3>
+<ul>
+  {% for tweet in tweets %}
+    <li>
+      <strong>{{ tweet.text }}</strong><br>
+      <small>{{ tweet.created_at }}</small>
+    </li>
+  {% empty %}
+    <li>No tweets found.</li>
+  {% endfor %}
+</ul>
